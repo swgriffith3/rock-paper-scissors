@@ -19,7 +19,6 @@ function computerPlay() {
 let computerSelection = computerPlay();
 
 // prompt asking player for input
-
 function playerInput() {
   let promptText = 'You did not choose Rock, Paper or Sissors';
   let playerPrompt = prompt(
@@ -44,6 +43,7 @@ function playerInput() {
   playerInput();
 }
 
+// variable holding players selection
 let playerSelection = playerInput();
 
 // game rules and play
@@ -73,8 +73,25 @@ function playRound(playerSelection, computerSelection) {
 }
 
 // variable holding the round results
-let gameResults = playRound(playerSelection, computerSelection);
+let roundResults = playRound(playerSelection, computerSelection);
+
+let playerPoint = 'win';
+let computerPoint = 'loose';
+let playerPointCounter = roundResults[roundResults.search(playerPoint)];
+let computerPointCounter = roundResults[roundResults.search(computerPoint)];
+
+function playerScore() {
+  let score = 0;
+  if (playerPointCounter == 'w') {
+    score++;
+  }
+}
+let playerTotal = playerScore();
+
+console.log(playerPointCounter);
+console.log(computerPointCounter);
+console.log(playerTotal);
 
 console.log(`Computer pick: ${computerSelection}`);
 console.log(`Your pick: ${playerSelection}`);
-console.log(gameResults);
+console.log(roundResults);
