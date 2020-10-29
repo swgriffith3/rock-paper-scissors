@@ -1,8 +1,8 @@
-// Create random number between 1 and 3
-let randomNum = Math.floor(Math.random() * (4 - 1) + 1);
-
+// Create random number between 1 and 3 &
 // Asign random number to rock, paper, or sissors
-function computerPlay(randomNum) {
+function computerPlay() {
+  let randomNum = Math.floor(Math.random() * (4 - 1) + 1);
+  console.log(randomNum);
   if (randomNum === 1) {
     randomNum = 'rock';
   }
@@ -16,66 +16,65 @@ function computerPlay(randomNum) {
 }
 
 // Variable holding the computers pick; rock, paper or sissors
-let computerSelection = computerPlay(randomNum);
-
-console.log(randomNum);
-console.log(`${computerSelection}: computer`);
+let computerSelection = computerPlay();
 
 // prompt asking player for input
 
-// let playerSelection = prompt(
-//   'Battle to the death! "Rock", "Paper" or "Sissors"?'
-// );
-
 function playerInput() {
-  let promptText = 'Please choose Rock, Paper or Sissors';
+  let promptText = 'You did not choose Rock, Paper or Sissors';
   let playerPrompt = prompt(
     'Battle to the death! "Rock", "Paper" or "Sissors"?'
   );
-  switch (playerPrompt.toLowerCase()) {
-    case 'rock':
-      return 'rock';
-      break;
-    case 'paper':
-      return 'paper';
-      break;
-    case 'sissors':
-      return 'sissors';
-      break;
-    default:
-      alert(promptText);
-      playerInput(playerPrompt);
+  if (playerPrompt.toLowerCase() == 'rock') {
+    return 'rock';
   }
+  if (playerPrompt.toLowerCase() == 'paper') {
+    return 'paper';
+  }
+  if (playerPrompt.toLowerCase() == 'sissors') {
+    return 'sissors';
+  }
+  if (
+    playerPrompt.toLowerCase() != 'rock' ||
+    playerPrompt.toLowerCase() != 'paper' ||
+    playerPrompt.toLowerCase() != 'sissors'
+  ) {
+    alert(promptText);
+  }
+  playerInput();
 }
+
 let playerSelection = playerInput();
-console.log(`${playerSelection}: player`);
 
 // game rules and play
 function playRound(playerSelection, computerSelection) {
   if (playerSelection == computerSelection) {
-    return `It's a tie, you both chose ${playerSelection}`;
+    return "It's a tie!";
   }
   if (playerSelection == 'rock' && computerSelection == 'paper') {
-    return `Computer chose ${computerSelection} and you chose ${playerSelection}. You loose, Paper beats Rock!`;
+    return 'You loose.. Paper beats Rock.';
   }
   if (playerSelection == 'paper' && computerSelection == 'rock') {
-    return `Computer chose ${computerSelection} and you chose ${playerSelection}. You win, Paper beats Rock!`;
+    return 'You win! Paper beats Rock.';
   }
   if (playerSelection == 'rock' && computerSelection == 'sissors') {
-    return `Computer chose ${computerSelection} and you chose ${playerSelection}. You win, Rock beats Sissors!`;
+    return 'You win! Rock beats Sissors.';
   }
   if (playerSelection == 'sissors' && computerSelection == 'rock') {
-    return `Computer chose ${computerSelection} and you chose ${playerSelection}. You loose, Rock beats Sissors!`;
+    return 'You loose.. Rock beats Sissors.';
   }
   if (playerSelection == 'sissors' && computerSelection == 'paper') {
-    return `Computer chose ${computerSelection} and you chose ${playerSelection}. You win, Sissors beat Paper!`;
+    return 'You win! Sissors beat Paper.';
   }
   if (playerSelection == 'paper' && computerSelection == 'sissors') {
-    return `Computer chose ${computerSelection} and you chose ${playerSelection}. You loose, Sissors beat Paper!`;
+    return 'You loose.. Sissors beat Paper.';
   }
   return playRound;
 }
 
 // variable holding the round results
 let gameResults = playRound(playerSelection, computerSelection);
+
+console.log(`Computer pick: ${computerSelection}`);
+console.log(`Your pick: ${playerSelection}`);
 console.log(gameResults);
