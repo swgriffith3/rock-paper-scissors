@@ -19,15 +19,36 @@ function computerPlay(randomNum) {
 let computerSelection = computerPlay(randomNum);
 
 console.log(randomNum);
-console.log(computerSelection);
+console.log(`${computerSelection}: computer`);
 
 // prompt asking player for input
-let playerPrompt = prompt('Battle to the death! "Rock", "Paper" or "Sissors"?');
 
-// convert player input to all lower case
-let playerSelection = playerPrompt.toLowerCase();
+// let playerSelection = prompt(
+//   'Battle to the death! "Rock", "Paper" or "Sissors"?'
+// );
 
-console.log(playerSelection);
+function playerInput() {
+  let promptText = 'Please choose Rock, Paper or Sissors';
+  let playerPrompt = prompt(
+    'Battle to the death! "Rock", "Paper" or "Sissors"?'
+  );
+  switch (playerPrompt.toLowerCase()) {
+    case 'rock':
+      return 'rock';
+      break;
+    case 'paper':
+      return 'paper';
+      break;
+    case 'sissors':
+      return 'sissors';
+      break;
+    default:
+      alert(promptText);
+      playerInput(playerPrompt);
+  }
+}
+let playerSelection = playerInput();
+console.log(`${playerSelection}: player`);
 
 // game rules and play
 function playRound(playerSelection, computerSelection) {
@@ -47,10 +68,10 @@ function playRound(playerSelection, computerSelection) {
     return `Computer chose ${computerSelection} and you chose ${playerSelection}. You loose, Rock beats Sissors!`;
   }
   if (playerSelection == 'sissors' && computerSelection == 'paper') {
-    return `Computer chose ${computerSelection} and you chose ${playerSelection}. You win, Sissors beat paper!`;
+    return `Computer chose ${computerSelection} and you chose ${playerSelection}. You win, Sissors beat Paper!`;
   }
   if (playerSelection == 'paper' && computerSelection == 'sissors') {
-    return `Computer chose ${computerSelection} and you chose ${playerSelection}. You loose, Sissors beat paper!`;
+    return `Computer chose ${computerSelection} and you chose ${playerSelection}. You loose, Sissors beat Paper!`;
   }
   return playRound;
 }
