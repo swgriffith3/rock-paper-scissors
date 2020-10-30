@@ -2,7 +2,7 @@
 // Asign random number to rock, paper, or sissors
 function computerPlay() {
   let randomNum = Math.floor(Math.random() * (4 - 1) + 1);
-  console.log(randomNum);
+
   if (randomNum === 1) {
     randomNum = 'rock';
   }
@@ -17,6 +17,7 @@ function computerPlay() {
 
 // Variable holding the computers pick; rock, paper or sissors
 let computerSelection = computerPlay();
+console.log(computerSelection);
 
 // prompt asking player for input
 function playerInput() {
@@ -81,16 +82,29 @@ let playerPointCounter = roundResults[roundResults.search(playerPoint)];
 let computerPointCounter = roundResults[roundResults.search(computerPoint)];
 
 function playerScore() {
-  let score = 0;
-  if (playerPointCounter == 'w') {
-    score++;
+  let pScore = 0;
+
+  if (playerPointCounter === 'w') {
+    pScore++;
+    return pScore;
   }
 }
+
+function computerScore() {
+  let cScore = 0;
+  if (computerPointCounter === 'l') {
+    cScore++;
+    return cScore;
+  }
+}
+
 let playerTotal = playerScore();
+let computerTotal = computerScore();
 
 console.log(playerPointCounter);
 console.log(computerPointCounter);
-console.log(playerTotal);
+console.log(`${playerTotal}: player points`);
+console.log(`${computerTotal}: computer points`);
 
 console.log(`Computer pick: ${computerSelection}`);
 console.log(`Your pick: ${playerSelection}`);
