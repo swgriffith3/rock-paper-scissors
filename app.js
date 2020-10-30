@@ -40,8 +40,8 @@ function playerInput() {
     playerPrompt.toLowerCase() != 'sissors'
   ) {
     alert(promptText);
+    return playerInput();
   }
-  playerInput();
 }
 
 // variable holding players selection
@@ -83,7 +83,6 @@ let computerPointCounter = roundResults[roundResults.search(computerPoint)];
 
 function playerScore() {
   let pScore = 0;
-
   if (playerPointCounter === 'w') {
     pScore++;
     return pScore;
@@ -109,3 +108,15 @@ console.log(`${computerTotal}: computer points`);
 console.log(`Computer pick: ${computerSelection}`);
 console.log(`Your pick: ${playerSelection}`);
 console.log(roundResults);
+
+// function playGame() {
+//   computerPlay();
+//   playerInput();
+//   playRound(playerSelection, computerSelection);
+//   playerScore();
+//   computerScore();
+// }
+
+// for (let i = 0; i < 5; i++) {
+//   playGame();
+// }
