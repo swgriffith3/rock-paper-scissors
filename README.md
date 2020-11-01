@@ -1,3 +1,5 @@
-This is an intoductory project to JavaScript from The Odin Project.
+This is an intoductory JavaScript project from The Odin Project.
 
-Built using plain javaScript (ES6).
+This is my first project without codeing along with a tutorial. This project was done with what I have learned so far and Googel of corse.
+
+Built using plain javaScript.
