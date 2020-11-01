@@ -1,3 +1,9 @@
+// variable holding score
+let pScore = 0;
+let cScore = 0;
+
+playGame();
+
 // function to play game
 function playGame() {
   //loop to play 5 rounds
@@ -21,11 +27,10 @@ function playGame() {
 
     // Variable holding the computers pick; rock, paper or sissors
     let computerSelection = computerPlay();
-    console.log(computerSelection);
 
     // prompt asking player for input
     function playerInput() {
-      let promptText = 'You did not choose Rock, Paper or Sissors';
+      let promptText = "Please choose 'Rock', 'Paper' or 'Sissors'";
       let playerPrompt = prompt(
         'Battle to the death! "Rock", "Paper" or "Sissors"?'
       );
@@ -54,25 +59,25 @@ function playGame() {
     // game rules and play
     function playRound(playerSelection, computerSelection) {
       if (playerSelection == computerSelection) {
-        return "It's a tie!";
+        return 'This round is a TIE!';
       }
       if (playerSelection == 'rock' && computerSelection == 'paper') {
-        return 'You loose.. Paper beats Rock.';
+        return 'You LOOSE this round, Paper beats Rock.';
       }
       if (playerSelection == 'paper' && computerSelection == 'rock') {
-        return 'You win! Paper beats Rock.';
+        return 'You WIN this round! Paper beats Rock.';
       }
       if (playerSelection == 'rock' && computerSelection == 'sissors') {
-        return 'You win! Rock beats Sissors.';
+        return 'You WIN this round! Rock beats Sissors.';
       }
       if (playerSelection == 'sissors' && computerSelection == 'rock') {
-        return 'You loose.. Rock beats Sissors.';
+        return 'You LOOSE this round, Rock beats Sissors.';
       }
       if (playerSelection == 'sissors' && computerSelection == 'paper') {
-        return 'You win! Sissors beat Paper.';
+        return 'You WIN this round! Sissors beat Paper.';
       }
       if (playerSelection == 'paper' && computerSelection == 'sissors') {
-        return 'You loose.. Sissors beat Paper.';
+        return 'You LOOSE this round, Sissors beat Paper.';
       }
       return playRound;
     }
@@ -81,15 +86,14 @@ function playGame() {
     let roundResults = playRound(playerSelection, computerSelection);
 
     // variables for score keeping
-    let playerPoint = 'win';
-    let computerPoint = 'loose';
+    let playerPoint = 'WIN';
+    let computerPoint = 'LOOSE';
     let playerPointCounter = roundResults[roundResults.search(playerPoint)];
     let computerPointCounter = roundResults[roundResults.search(computerPoint)];
 
     // player scorekeeper
     function playerScore() {
-      let pScore = 0;
-      if (playerPointCounter === 'w') {
+      if (playerPointCounter === 'W') {
         pScore++;
         return pScore;
       }
@@ -97,24 +101,41 @@ function playGame() {
 
     // computer scorekeeper
     function computerScore() {
-      let cScore = 0;
-      if (computerPointCounter === 'l') {
+      if (computerPointCounter === 'L') {
         cScore++;
         return cScore;
       }
     }
 
-    // variables holding scores
-    let playerTotal = playerScore();
-    let computerTotal = computerScore();
+    playerScore();
+    computerScore();
 
-    console.log(playerPointCounter);
-    console.log(computerPointCounter);
-    console.log(`${playerTotal}: player points`);
-    console.log(`${computerTotal}: computer points`);
-    console.log(`Computer pick: ${computerSelection}`);
-    console.log(`Your pick: ${playerSelection}`);
-    console.log(roundResults);
+    console.log(
+      `The computer chose ${computerSelection.toUpperCase()} and you chose ${playerSelection.toUpperCase()}`
+    );
+    console.log(
+      `${roundResults}\n-----------------------------------------------------`
+    );
   }
 }
-playGame();
+let gameOver = 'The game is over and';
+
+// final score output
+function finalScore(playerScore, computerScore) {
+  if (pScore > cScore) {
+    console.log(
+      `${gameOver} you WIN! You scored ${pScore} points and the computer scored ${cScore} points.`
+    );
+  } else if (pScore < cScore) {
+    console.log(
+      `${gameOver} you LOOSE. You scored ${pScore} points and the computer scored ${cScore} points.`
+    );
+  } else {
+    console.log(
+      `${gameOver} it's a TIE. You scored ${pScore} points and the computer scored ${cScore} points.`
+    );
+  }
+}
+
+finalScore();
+console.log(`\n-Refresh page to play again-`);
