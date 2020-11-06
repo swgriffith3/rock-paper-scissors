@@ -9,7 +9,7 @@ function playGame() {
   //loop to play 5 rounds
   for (let i = 0; i < 5; i++) {
     // Create random number between 1 and 3 &
-    // Asign random number to rock, paper, or sissors
+    // Asign random number to rock, paper, or scissors
     function computerPlay() {
       let randomNum = Math.floor(Math.random() * (4 - 1) + 1);
 
@@ -20,19 +20,19 @@ function playGame() {
         randomNum = 'paper';
       }
       if (randomNum === 3) {
-        randomNum = 'sissors';
+        randomNum = 'scissors';
       }
       return randomNum;
     }
 
-    // Variable holding the computers pick; rock, paper or sissors
+    // Variable holding the computers pick; rock, paper or scissors
     let computerSelection = computerPlay();
 
     // prompt asking player for input
     function playerInput() {
-      let promptText = "Please choose 'Rock', 'Paper' or 'Sissors'";
+      let promptText = "Please choose 'Rock', 'Paper' or 'Scissors'";
       let playerPrompt = prompt(
-        'Battle to the death! "Rock", "Paper" or "Sissors"?'
+        'Battle to the death! "Rock", "Paper" or "Scissors"?'
       );
       if (playerPrompt.toLowerCase() == 'rock') {
         return 'rock';
@@ -40,13 +40,13 @@ function playGame() {
       if (playerPrompt.toLowerCase() == 'paper') {
         return 'paper';
       }
-      if (playerPrompt.toLowerCase() == 'sissors') {
-        return 'sissors';
+      if (playerPrompt.toLowerCase() == 'scissors') {
+        return 'scissors';
       }
       if (
         playerPrompt.toLowerCase() != 'rock' ||
         playerPrompt.toLowerCase() != 'paper' ||
-        playerPrompt.toLowerCase() != 'sissors'
+        playerPrompt.toLowerCase() != 'scissors'
       ) {
         alert(promptText);
         return playerInput();
@@ -67,17 +67,17 @@ function playGame() {
       if (playerSelection == 'paper' && computerSelection == 'rock') {
         return 'You WIN this round! Paper beats Rock.';
       }
-      if (playerSelection == 'rock' && computerSelection == 'sissors') {
-        return 'You WIN this round! Rock beats Sissors.';
+      if (playerSelection == 'rock' && computerSelection == 'scissors') {
+        return 'You WIN this round! Rock beats Scissors.';
       }
-      if (playerSelection == 'sissors' && computerSelection == 'rock') {
-        return 'You LOOSE this round, Rock beats Sissors.';
+      if (playerSelection == 'scissors' && computerSelection == 'rock') {
+        return 'You LOOSE this round, Rock beats Scissors.';
       }
-      if (playerSelection == 'sissors' && computerSelection == 'paper') {
-        return 'You WIN this round! Sissors beat Paper.';
+      if (playerSelection == 'scissors' && computerSelection == 'paper') {
+        return 'You WIN this round! Scissors beat Paper.';
       }
-      if (playerSelection == 'paper' && computerSelection == 'sissors') {
-        return 'You LOOSE this round, Sissors beat Paper.';
+      if (playerSelection == 'paper' && computerSelection == 'scissors') {
+        return 'You LOOSE this round, Scissors beat Paper.';
       }
       return playRound;
     }
